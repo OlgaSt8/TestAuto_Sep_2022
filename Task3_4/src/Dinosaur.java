@@ -3,6 +3,24 @@ public abstract class Dinosaur implements Eating{
     private int weight;
     private String name;
 
+    public Dinosaur() {};
+
+    public class Habitat {
+        private String country;
+        private String region;
+        public Habitat(String country, String region) {
+            this.country = country;
+            this.region = region;
+        }
+
+        @Override
+        public String toString() {
+            return "Habitat{" +
+                    "country='" + country + '\'' +
+                    ", region='" + region + '\'' +
+                    '}';
+        }
+    }
     public int getGrowth(){
         return growth;
     }
@@ -44,4 +62,6 @@ public abstract class Dinosaur implements Eating{
     public void Eat(){
         System.out.println(String.format("Dinosaur %s eat plants and meat", this.getName()));
     }
+
+
 }

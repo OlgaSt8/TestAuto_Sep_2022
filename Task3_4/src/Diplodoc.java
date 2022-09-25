@@ -3,7 +3,12 @@ public final class Diplodoc extends Herbivore {
     private static int diplodocCount;
     int neckLength;
 
-    Diplodoc(int growth, int weight, String name, String favoriteGrass,int neckLength){
+  public static class neckLenghtComparator {
+      public boolean compare (Diplodoc firstDiplodoc, Diplodoc secondDiplodoc) {
+          return firstDiplodoc.neckLength == (secondDiplodoc.neckLength);
+      }
+  }
+    Diplodoc(int growth, int weight, String name, String favoriteGrass, int neckLength){
         super (growth, weight, name, favoriteGrass);
         this.neckLength = neckLength;
         diplodocCount ++;
