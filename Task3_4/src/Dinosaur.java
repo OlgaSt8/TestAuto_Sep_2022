@@ -1,39 +1,38 @@
-public abstract class Dinosaur implements Eating{
-    private  int growth;
-    private int weight;
-    private String name;
+import java.io.Serializable;
 
-    public Dinosaur() {};
+public abstract class Dinosaur implements Serializable, Eating {
+    protected int growth;
+    protected int weight;
+    protected String name;
+    protected Habitat habitat;
 
-    public class Habitat {
+    public int getGrowth() { return growth; }
+    public int getWeight(){ return weight;}
+    public String getName() { return name; }
+    public Habitat getHabitat() { return habitat;}
+
+    public Dinosaur  (int growth, int weight, String name, String country, String region){
+        this.growth = growth;
+        this.weight = weight;
+        this.name = name;
+        this.habitat = new Habitat(country, region);
+    }
+
+    public class Habitat implements Serializable {
         private String country;
         private String region;
-        public Habitat(String country, String region) {
+        public Habitat (String country, String region) {
             this.country = country;
             this.region = region;
         }
 
         @Override
         public String toString() {
-            return "Habitat{" +
-                    "country='" + country + '\'' +
-                    ", region='" + region + '\'' +
-                    '}';
+            return "Habitat country='" + country + "', region='" + region + "'";
         }
     }
-    public int getGrowth(){
-        return growth;
-    }
 
-    public int getWeight(){
-        return weight;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public void setGrowth(int growth){
+   public void setGrowth(int growth){
         if ((growth>0) && (growth<35)) {
             this.growth = growth;
         } else {
@@ -53,15 +52,7 @@ public abstract class Dinosaur implements Eating{
         this.name = name;
     }
 
-    protected Dinosaur(int growth, int weight, String name){
-        this.growth = growth;
-        this.weight = weight;
-        this.name = name;
-    }
-
     public void Eat(){
-        System.out.println(String.format("Dinosaur %s eat plants and meat", this.getName()));
+        System.out.printf("Dinosaur %s eat plants and meat", this.name);
     }
-
-
 }
